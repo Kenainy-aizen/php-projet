@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Entree</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+    <form id="ajouterMedic" action="ajouterMedic">
+        <h1 class="titleAjouter">Editer d'Entree</h1>
+        <div>
+            <label id="labelMedic" for="design">Numero d'entree:</label>
+            <input style="margin: 10px 0px 0px 70px;" id="inputMedicAjou" type="text" required>
+        </div>
+        <div>
+            <label id="labelMedic" for="numMedic">Numero de Medicament:</label>
+            <input style="margin: 10px 0px 0px 20px;" id="inputMedicAjou" type="text" required>
+        </div>
+        <div>
+            <label id="labelMedic" for="design">Stock d'entree:</label>
+            <input style="margin: 10px 0px 0px 85px;" id="inputMedicAjou" type="number" required>
+        </div>
+        <div>
+            <label id="labelMedic" for="PU">Date d'entree:</label>
+            <input id="inputMedicAjou" type="date" required style="margin: 10px 0px 0px 164px;">
+        </div>
+        
+        <div style="margin: 20px 0px 0px 200px;">
+            <button onclick="window.open('tableEnter.html')" style= "background-color: rgb(193, 215, 251); border: 2px solid darkblue;" id="Edit">Editer</button>
+            <button style="background-color: rgb(255, 189, 189); border: 2px solid rgb(158, 3, 3);" id="Delete">Supprimer</button>
+        </div>
+    </form>
+</body>
+</html>

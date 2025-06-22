@@ -1,0 +1,32 @@
+  <?php foreach ($achat as $achat) : ?>
+                <tr>
+                  <td> <?= $achat['numAchat'] ?></td>
+                  <td> <?= $achat['numMedoc'] ?></td>
+                  <td> <?= $achat['nomClient'] ?></td>
+                  <td> <?= $achat['nbr'] ?></td>
+                  <td> <?= $achat['dateAchat'] ?></td>
+                  <td>
+                        <button onclick="openModal1('<?= $achat['numAchat'] ?>', '<?= $achat['numMedoc'] ?>', '<?=$achat['nomClient'] ?>', <?= $achat['nbr'] ?>, '<?= $achat['dateAchat'] ?>')" style="background-color: rgb(193, 215, 251); border: 2px solid darkblue;" id="Edit">Editer</button></a>
+                        <!-- <a href="index.php?entity=achat&action=delete&id=&param1=&param2="> <button style="background-color: rgb(255, 189, 189); border: 2px solid rgb(158, 3, 3);" id="Delete">Supprimer</button></a> -->
+                        <button style="background-color: rgb(255, 189, 189); border: 2px solid rgb(158, 3, 3);" class="Delete" data-id="<?= $achat['numAchat'] ?>" data-param1="<?= $achat['numMedoc'] ?>" data-param2="<?= $achat['nbr'] ?>" >Supprimer</button>
+                        
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+
+
+            !-- <?php
+
+    if(isset($_SESSION['error_message'])) {
+        $error_message = $_SESSION['error_message'];
+        $stock_initial = $_SESSION['stock_initial'];
+        echo "<script>alert('$error_message Stock initial : $stock_initial');</script>";
+        unset($_SESSION['error_message']);
+        unset($_SESSION['stock_initial']);
+    }
+     
+    if(isset($_SESSION['error_message'])) {
+        echo "<p style='color: red;'>". $_SESSION['error_message'] . "</p>";
+        unset($_SESSION['error_message']);
+    }
+?>

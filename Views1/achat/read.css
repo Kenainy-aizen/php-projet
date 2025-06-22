@@ -1,0 +1,327 @@
+*{
+    text-decoration: none;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+body{
+    background-color: #395b41;
+}
+
+#Medoc , #Entree , #Achats  ,#Acceuil{
+    
+    /* background-color: darkblue; */ background-color: #28a745;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin: 5px  10px 0px 0px;
+    color: white;
+    
+    
+}
+.d-flex {
+    float: inline-end;
+    margin-left: 600px;
+}
+#inputRecherche {
+    
+    border: 2px solid darkblue;
+    border-radius: 4px;
+    height: 30px;
+    width: 400px;
+    padding-left: 10px;
+    margin-left: -130px;
+    
+    
+}
+.notif{
+    border: none;
+    border-radius: 50px;
+    padding: 5px 10px;
+    margin-left: 10px;
+    background-color: rgb(181, 208, 255);
+    border: 2px solid darkblue;
+    
+}
+.btnRecherche {
+    background-color: darkblue;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    height: 30px;
+    width: 120px;
+}
+.btnRecherche:hover{
+    background-color: aqua;
+    color: black;
+}
+.trMedocTble {
+    /* background-color: rgb(241, 241, 241); */background-color: #86e89b;
+}
+.trMedocTble th {
+    
+    height: 40px;
+}
+.tblrup {
+    margin-left: 150px;
+}
+
+.titre {
+    cursor:pointer;
+    color: aqua;
+    text-align: center;
+     position: fixed; 
+    margin-left: 600px;
+    animation:  titre 4s linear infinite;
+}
+
+.teste {
+     
+    position: absolute;
+    top: 600px;
+    
+}
+@keyframes titre{
+    100%{
+        filter:hue-rotate(100deg);
+        color: rgb(187, 238, 233);
+    }
+}
+#medicaments , #enter , #AchatsVidy , #plusVendu ,#rupture {
+    text-align: center;
+    margin-left: 45px;
+    margin-right: 20px;
+    border-collapse: collapse;
+    height: 100px;
+    border-left: solid  #28a745;
+    border-right: solid  #28a745;
+
+}
+#medicaments {
+    margin-left: 150px;
+}
+#Edit , .Delete {
+    border-radius: 4px;
+    height: 30px;
+    width: 100px;
+    margin: 10px 0px 5px 660px;
+    margin: 2px;
+}
+
+table {
+    border-left: #218838;
+    border-right: #218838;
+}
+.tbl tr td , .tblRupture tr td {
+    border-bottom: 1px solid rgb(129, 129, 129);
+    border-left: #28a745;
+    
+}
+.tbl {
+    
+    border-left: 4px solid black;
+    background-color: rgb(243, 243, 254);
+
+}
+.btn1 {
+    border: 2px solid rgb(177, 177, 3);
+    border-radius: 4px;
+    height: 30px;
+    width: 100px;
+    margin: 10px 0px 5px 660px;
+    background-color: rgb(105, 232, 113);
+    position: fixed;
+    border-color: #28a745;
+    top: 0;
+    /* z-index: 100; */
+}
+.btn1:hover{
+    background-color: aqua;
+}
+.active {
+    color: darkblue;
+}
+.ExporPdf {
+    border: 2px solid rgb(1, 102, 1);
+    
+    border-radius: 4px;
+    height: 30px;
+    width: 120px;
+    margin: 10px 0px 5px 770px;
+    
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    background-color: rgb(167, 233, 191);
+    
+}
+
+.Rupture , .Plusvendu , .recette {
+   border: 2px solid rgb(125, 83, 0);
+   background-color: rgb(255, 240, 215);
+   color: black;
+   width: 250px;
+   height: 70px;
+   border-radius: 4px;
+   margin: 2px 20px;
+}
+.tblRupture {
+    border-collapse: collapse;
+    width: 580px;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.tblRupture tr th {
+    height: 40px;
+    background-color: white;
+}
+.tblRupture tr{
+    height: 40px;
+}
+.navbarAll {
+    position: fixed;
+    height: 80px;
+    width: 100%;
+    align-items: center;
+    margin-top: -55px;
+  
+}
+
+.logo {
+    margin-left: 40px;
+    color: darkblue;
+    font-size: 25px;
+
+}
+.navbarAll div {
+    display: flex;
+    /* background-color: rgb(241, 241, 241); */background-color: #28a745;
+    height: 50px;
+    align-items: center;
+    text-align: center;
+
+}
+#mynavbar ul {
+    display: flex;
+    margin-left: 20px;
+
+}
+#mynavbar li{
+    list-style: none;
+    margin-left: 20px;
+    background-color: #28a745;
+   
+}
+.nav-link {
+    color: whitesmoke;
+    border: none;
+    background-color: #28a745;
+}
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+.modal1 {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content1 {
+    background-color: white; 
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 300px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 300px;
+}
+
+.close {
+    color: red;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: darkred;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 15px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn2 {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 15px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn2:hover {
+    background-color: #218838;
+}
+
+.btn:hover {
+    background-color: #218838;
+}

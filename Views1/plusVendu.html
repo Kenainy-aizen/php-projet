@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plus Vendus</title>
+    <link rel="stylesheet" href="cssAcceuil.css">
+    <nav class="navbarAll">
+        <div>
+          <a class="logo">G-pharm</a>
+          
+          <div class="" id="mynavbar">
+            <ul>
+              <li class="nav-item">
+                <button type="submit" onclick="window.open('acceuil.html')" class="nav-link">Acceuil</button>
+              </li>
+              <li class="nav-item">
+                <button onclick="window.open('tableMedoc.html')" class="nav-link" >Medicaments</button>
+              </li>
+              <li class="nav-item">
+                <button onclick="window.open('tableEnter.html')" class="nav-link">Stocks</button>
+              </li>
+              <li class="nav-item">
+                <button onclick="window.open('tableAchat.html')" class="nav-link">Achats</button>
+              </li>
+              
+            </ul>
+            <form class="d-flex" action="">
+              <input id="inputRecherche" type="text" placeholder="Taper ici pour rechercher">
+              <button class="btnRecherche">Rechercher</button>
+            </form>
+          <a href=""><button class="notif">N</button></a>
+            
+          </div>
+        </div>
+      </nav>
+</head>
+<body>
+    <div style="margin-top: 55px;margin-left: 140px;">
+        <table class="tbl" id="plusVendu">
+            <colgroup>
+                <col style="width: 300px;">
+                <col style="width: 300px;">
+                <col style="width: 300px;">
+                <col style="width: 300px;">
+            </colgroup>
+            <thead style="position: fixed;">
+                <tr class="trMedocTble">
+                    <th style="width: 300px;">Numero de Medicament</th>
+                    <th style="width: 300px;">Design</th>
+                    <th style="width: 300px;">Nombres</th>
+                    <th style="width: 300px;">Total</th>
+                </tr>
+            </thead>
+            <tr style="height: 40px;"></tr>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,358 @@
+*{
+    text-decoration: none;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+body{
+    background-color: #395b41;
+}
+#Medoc , #Entree , #Achats  ,#Acceuil{
+    
+    background-color: darkblue;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin: 5px  10px 0px 0px;
+    color: white;
+    
+    
+}
+.d-flex {
+    float: inline-end;
+    margin-left: 600px;
+}
+#inputRecherche {
+    
+    border: 2px solid darkblue;
+    border-radius: 4px;
+    height: 30px;
+    width: 400px;
+    padding-left: 10px;
+    margin-left: -130px;
+    
+    
+}
+.notif{
+    border: none;
+    border-radius: 50px;
+    padding: 5px 10px;
+    margin-left: 10px;
+    background-color: rgb(181, 208, 255);
+    border: 2px solid darkblue;
+    
+}
+.btnRecherche {
+    background-color: darkblue;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    height: 30px;
+    width: 120px;
+    
+    
+}
+.trMedocTble {
+    background-color: #86e89b;;
+}
+.trMedocTble th {
+    
+    height: 40px;
+}
+.tblrup {
+    margin-left: 150px;
+}
+#medicaments , #enter , #AchatsVidy , #plusVendu ,#rupture {
+    text-align: center;
+    margin-left: 60px;
+    margin-right: 20px;
+    border-collapse: collapse;
+    height: 100px;
+}
+#medicaments {
+    margin-left: 150px;
+}
+#Edit , #Delete {
+    border-radius: 4px;
+    height: 30px;
+    width: 100px;
+    margin: 10px 0px 5px 660px;
+    margin: 2px;
+}
+.tbl tr td , .tblRupture tr td {
+    border-bottom: 1px solid rgb(129, 129, 129);
+    
+}
+.tbl {
+    
+    border-left: 4px solid black;
+    background-color: rgb(243, 243, 254);
+
+}
+.addMedoc {
+    border: 2px solid rgb(177, 177, 3);
+    border-radius: 4px;
+    height: 30px;
+    width: 100px;
+    margin: 10px 0px 5px 660px;
+    background-color: rgb(248, 248, 202);
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    
+    
+    
+}
+.active {
+    color: darkblue;
+}
+.ExporPdf {
+    border: 2px solid rgb(1, 102, 1);
+    
+    border-radius: 4px;
+    height: 30px;
+    width: 120px;
+    margin: 10px 0px 5px 770px;
+    
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    background-color: rgb(167, 233, 191);
+    
+}
+
+.Rupture , .Plusvendu , .recette {
+   border: 2px solid rgb(125, 83, 0);
+   background-color: rgb(255, 240, 215);
+   color: black;
+   width: 250px;
+   height: 70px;
+   border-radius: 4px;
+   margin: 2px 20px;
+}
+.tblRupture {
+    border-collapse: collapse;
+    width: 580px;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.tblRupture tr th {
+    height: 40px;
+    background-color: white;
+}
+.tblRupture tr{
+    height: 40px;
+}
+.navbarAll {
+    /* position: fixed; */
+    height: 80px;
+    width: 100%;
+    align-items: center;
+    /* margin-top: -55px; */
+  
+}
+
+.logo {
+    margin-left: 40px;
+    color: darkblue;
+    font-size: 25px;
+
+}
+.navbarAll div {
+    display: flex;
+    background-color:#28a745;
+    height: 50px;
+    align-items: center;
+    text-align: center;
+
+}
+#mynavbar ul {
+    display: flex;
+    margin-left: 20px;
+
+}
+#mynavbar li{
+    list-style: none;
+    margin-left: 20px;
+   
+}
+.nav-link {
+    color: whitesmoke;
+    border: none;
+    background-color:#28a745;
+    
+}
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+.container {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+}
+
+#formulaire-achat {
+    flex: 1;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#affichage-achats {
+    flex: 2;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input {
+    margin-bottom: 15px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.divTop5 {
+    background-color: whitesmoke;
+    position : fixed;
+    width: 500px;
+    margin-left: 950px;
+    margin-top: 10px;
+}
+
+.divRupture {
+    background-color: whitesmoke;
+    position : fixed;
+    width: 500px;
+    margin-left: 950px;
+    margin-top: 10px; 
+}
+
+.divRecette {
+    background-color: whitesmoke;
+    width: 500px;
+    margin-top: 50px;
+    margin-left: 950px;
+    position: fixed;
+}
+
+.divHistogramme {
+    background-color: whitesmoke;
+    position: fixed;
+    width: 900px;
+    height: 600px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    /* position: fixed; */
+    width: 100%;
+    bottom: 0;
+}
+
+.conteneur {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    position: relative;
+}
+.axe-y {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    height: 300px;
+    padding-right: 10px;
+    border-right: 1px solid #000;
+}
+.axe-y div {
+    text-align: right;
+    padding-right: 10px;
+}
+.histogramme {
+    display: flex;
+    align-items: flex-end;
+    height: 300px;
+    gap: 20px;
+    flex-grow: 1;
+}
+.barre {
+    width: 50px;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    position: relative;
+}
+.barre::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #ccc;
+    top: 0;
+}
+.axe-x {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding: 0 20px;
+}
+.axe-x div {
+    width: 50px;
+    text-align: center;
+}

@@ -1,0 +1,31 @@
+*{
+    text-decoration: none;
+    font-family: cursive;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+}
+#Edit , #Delete {
+    border-radius: 4px;
+    height: 30px;
+    width: 100px;
+    margin: 10px 0px 5px 660px;
+    margin: 2px;
+}
+#inputMedicAjou {
+    border: 1px solid black;
+    padding: 8px 30px;
+    border-radius: 4px;
+}
+.titleAjouter {
+    margin-bottom: 20px;
+    text-decoration: underline;
+}
+#ajouterMedic {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    margin-top: 150px;
+
+}

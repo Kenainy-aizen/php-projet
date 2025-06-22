@@ -1,0 +1,88 @@
+ 
+#<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Histogramme Dynamique</title>
+
+    <style>
+
+        .histogramme {
+
+            display: flex;
+
+            align-items: flex-end;
+
+            width: 500px;
+
+            height: 300px;
+
+            border: 2px solid black;
+
+            padding: 10px;
+
+            gap: 10px;
+
+        }
+
+        .bar {
+
+            width: 50px;
+
+            background-color: blue;
+
+            text-align: center;
+
+            color: white;
+
+            font-weight: bold;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+
+<div class="histogramme" id="chart"></div>
+
+
+
+<script>
+
+    const data = [5, 10, 15, 20, 25]; // Valeurs des barres
+
+    const histogramme = document.getElementById("chart");
+
+
+
+    data.forEach(value => {
+
+        let bar = document.createElement("div");
+
+        bar.className = "bar";
+
+        bar.style.height = value * 10 + "px"; // Ajuste la hauteur
+
+        bar.innerText = value;
+
+        histogramme.appendChild(bar);
+
+    });
+
+</script>
+
+
+
+</body>
+
+</html>
