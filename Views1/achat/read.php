@@ -1,200 +1,196 @@
-
 <?php
-// Regrouper les lignes par numéro d’achat
 $groupes = [];
 foreach ($achat as $ligne) {
-    $key = $ligne['numAchat'];
-    $groupes[$key][] = $ligne;
+    $groupes[$ligne["numAchat"]][] = $ligne;
 }
 ?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ACHAT</title>
-    <link rel="stylesheet" href="/lib/sweetalert2/sweetalert2.min.css">
-    <link rel="stylesheet" href="/Views1/achat/read.css">
-    <nav class="navbarAll">
-        <div>
-          <a class="logo">G-pharm</a>
-          
-          <div class="" id="mynavbar">
-           
-          <li class="nav-item">
-                  <a href="index.php?entity=acceuil&action=read"><button class="nav-link">Acceuil</button></a>
-                </li>
-                <li class="nav-item">
-                  <a href="index.php?entity=medicament&action=read"><button class="nav-link" >Medicaments</button></a>
-                </li>
-                <li class="nav-item">
-                  <a href="index.php?entity=achat&action=read"><button class="nav-link">Achats</button></a>
-                </li>
-                <li class="nav-item">
-                   <a href="index.php?entity=entree&action=read"><button class="nav-link">Stocks</button></a>
-          </li>
-            <form class="d-flex" action="index.php?entity=achat&action=rechercher" method="POST" >
-              <input id="inputRecherche" name="inputRecherche" type="text" placeholder="Taper ici pour rechercher">
-              <button class="btnRecherche" type="submit" >Rechercher</button>
-            </form>
-          <a href=""><button class="notif">N</button></a>
-            
-          </div>
-        </div>
-      </nav>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ventes &amp; Achats — G-Pharm</title>
+  <link rel="stylesheet" href="<?= BASE_URL ?>/lib/sweetalert2/sweetalert2.min.css">
+  <link rel="stylesheet" href="<?= BASE_URL ?>/Views1/shared/global.css">
+  <link rel="stylesheet" href="<?= BASE_URL ?>/Views1/achat/read.css">
 </head>
 <body>
-    
-<div class="titre">
-        <h1>Liste des achat</h1>
+
+<?php
+$activeNav = "achat";
+include __DIR__ . "/../shared/sidebar.php";
+?>
+
+<div class="main">
+
+  <!-- ── TOPBAR ── -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <span class="page-title">Ventes &amp; Achats</span>
+      <span class="count-badge"><?= count($groupes) ?></span>
+      <span class="count-label">facture<?= count($groupes) !== 1
+          ? "s"
+          : "" ?></span>
     </div>
-    <div  style="margin-top: 55px;"><br><br><br>   
-        <div class="teste">
-    
-        </div>
-        <br><br><br>   
-        
-        <table class="tbl" id="AchatsVidy">
-          
-            <colgroup>
-                <col style="width: 200px;">
-                <col style="width: 200px;">
-                <col style="width: 520px;">
-                <col style="width: 100px;">
-                <col style="width: 200px;">
-            </colgroup>
-            
-            <thead  style="position: fixed;">
-                <tr class="trMedocTble">
-                    <th style="width: 200px;">Numero d'Achat</th>
-                    <th style="width: 200px;">Numero de Medicament</th>
-                    <th style="width: 520px;">Nom du Client</th>
-                    <th style="width: 100px;">Nombre</th>
-                    <th style="width: 200px;">Date d'Achat</th>
-                    <th style="width: 210px; background-color:rgb(33, 33, 33);color: white;">Action</th>
+    <div class="topbar-right">
+      <form class="search-box" action="index.php?entity=achat&action=rechercher" method="POST">
+        <span class="si">🔍</span>
+        <input name="inputRecherche" type="text" placeholder="Rechercher une vente...">
+        <button class="btn btn-primary btn-sm" type="submit">Rechercher</button>
+      </form>
+      <a href="index.php?entity=achat&action=create" class="btn btn-primary">➕ Nouvelle Vente</a>
+    </div>
+  </div>
+
+  <!-- ── PAGE CONTENT ── -->
+  <div class="page-wrap">
+    <div class="card">
+      <div class="tbl-wrap scrollable">
+        <table class="dtable">
+          <thead>
+            <tr>
+              <th>N° Facture</th>
+              <th>Médicament</th>
+              <th>Client</th>
+              <th>Qté</th>
+              <th>Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+
+          <?php if (empty($groupes)): ?>
+            <tr>
+              <td colspan="6">
+                <div class="empty">
+                  <div class="empty-ico">🛒</div>
+                  <div class="empty-txt">Aucune vente enregistrée</div>
+                  <div class="empty-sub">Créez une nouvelle vente ou ajustez votre recherche.</div>
+                </div>
+              </td>
+            </tr>
+
+          <?php else: ?>
+            <?php $groupIndex = 0; ?>
+            <?php foreach ($groupes as $numAchat => $lignes): ?>
+              <?php
+              $rowspan = count($lignes);
+              $firstLine = $lignes[0];
+              $rowClass = $groupIndex % 2 === 0 ? "group-even" : "group-odd";
+              ?>
+              <?php foreach ($lignes as $i => $ligne): ?>
+                <tr class="<?= $rowClass ?>">
+
+                  <?php if ($i === 0): ?>
+                    <td rowspan="<?= $rowspan ?>" class="num-facture">
+                      <?= htmlspecialchars($numAchat) ?>
+                    </td>
+                  <?php endif; ?>
+
+                  <td><?= htmlspecialchars($ligne["numMedoc"]) ?></td>
+
+                  <?php if ($i === 0): ?>
+                    <td rowspan="<?= $rowspan ?>">
+                      <?= htmlspecialchars($firstLine["nomClient"]) ?>
+                    </td>
+                  <?php endif; ?>
+
+                  <td><?= htmlspecialchars($ligne["nbr"]) ?></td>
+
+                  <?php if ($i === 0): ?>
+                    <td rowspan="<?= $rowspan ?>">
+                      <?= date("d/m/Y", strtotime($firstLine["dateAchat"])) ?>
+                    </td>
+                    <td rowspan="<?= $rowspan ?>">
+                      <div class="action-group">
+                        <button class="btn btn-info btn-sm pdf"
+                          data-id2="<?= htmlspecialchars($numAchat) ?>">
+                          📄 PDF
+                        </button>
+                        <button class="btn btn-danger btn-sm Delete"
+                          data-id="<?= htmlspecialchars($numAchat) ?>"
+                          data-param1="<?= htmlspecialchars(
+                              $firstLine["numMedoc"],
+                          ) ?>"
+                          data-param2="<?= htmlspecialchars(
+                              $firstLine["nbr"],
+                          ) ?>">
+                          🗑 Supprimer
+                        </button>
+                      </div>
+                    </td>
+                  <?php endif; ?>
+
                 </tr>
-            </thead>
-            <tr style="height: 40px;"></tr>
+              <?php endforeach; ?>
+              <?php $groupIndex++; ?>
+            <?php endforeach; ?>
+          <?php endif; ?>
 
-        
- 
-
-<?php foreach ($groupes as $numAchat => $lignes): ?>
-    <?php 
-        $rowspan = count($lignes);
-        $client = $lignes[0]['nomClient'];
-        $dateAchat = $lignes[0]['dateAchat'];
-    ?>
-    <?php foreach ($lignes as $i => $ligne): ?>
-        <tr>
-            <?php if ($i === 0): ?>
-                <td rowspan="<?= $rowspan ?>"><?= htmlspecialchars($numAchat) ?></td>
-            <?php endif; ?>
-
-            <td><?= htmlspecialchars($ligne['numMedoc']) ?></td>
-
-            <?php if ($i === 0): ?>
-                <td rowspan="<?= $rowspan ?>"><?= htmlspecialchars($client) ?></td>
-            <?php endif; ?>
-
-            <td><?= htmlspecialchars($ligne['nbr']) ?></td>
-
-            <?php if ($i === 0): ?>
-                <td rowspan="<?= $rowspan ?>"><?= htmlspecialchars($dateAchat) ?></td>
-                <td rowspan="<?= $rowspan ?>">
-                    <!-- <button 
-                        onclick="openModal1('<?= $ligne['numAchat'] ?>', '<?= $ligne['numMedoc'] ?>', '<?= $ligne['nomClient'] ?>', <?= $ligne['nbr'] ?>, '<?= $ligne['dateAchat'] ?>')" 
-                        style="background-color: rgb(193, 215, 251); border: 2px solid darkblue;" 
-                        id="Edit">Editer</button> -->
-
-                    <button  style="background-color: rgb(193, 215, 251); border: 2px solid darkblue;" id="Edit" class="pdf" data-id2="<?= $ligne['numAchat'] ?>">Editer en pdf</button>
-
-                    <button 
-                        style="background-color: rgb(255, 189, 189); border: 2px solid rgb(158, 3, 3);" 
-                        class="Delete" 
-                        data-id="<?= $ligne['numAchat'] ?>" 
-                        data-param1="<?= $ligne['numMedoc'] ?>" 
-                        data-param2="<?= $ligne['nbr'] ?>">Supprimer</button>
-                </td>
-            <?php endif; ?>
-        </tr>
-    <?php endforeach; ?>
-<?php endforeach; ?>
-
-
-
-          
+          </tbody>
         </table>
-        <div><a href="index.php?entity=achat&action=create" ><button class="btn1">Ajouter</button></a></div>
-        <!-- <div><button class="ExporPdf">Exporter en pdf</button></div> -->
+      </div>
     </div>
+  </div>
 
-    <div class="">
+</div><!-- /.main -->
 
-    </div>
+<script src="<?= BASE_URL ?>/lib/sweetalert2/sweetalert2.all.min.js"></script>
+<script>
+  /* ── PDF handler ── */
+  document.querySelectorAll('.pdf').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const id = this.getAttribute('data-id2');
+      window.open('index.php?entity=achat&action=CreatePdf&id=' + id, '_blank');
+    });
+  });
 
-    <div id="modal1" class="modal1">
-            <div class="modal-content1">
-                <span class="close" onclick="closeModal1()">&times;</span>
-                <h2>Modification de liste d'achat</h2>
-                <form id="medicament-form" action="index.php?entity=achat&action=update" method="POST">
-                    <label for="numMedoc">Numero medicament :</label>
-                    <input type="text" name="numMedoc" id="numMedoc" value="" >
+  /* ── Delete handler ── */
+  document.querySelectorAll('.Delete').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const id     = this.getAttribute('data-id');
+      const param1 = this.getAttribute('data-param1');
+      const param2 = this.getAttribute('data-param2');
 
-                    <label for="nomClient">Nom client :</label>
-                    <input type="text" name="nomClient" id="nomClient" value="" >
-
-                    <label for="nbr">Stock :</label>
-                    <input type="number" name="nbr" id="nbr" value="" >
-
-                    <label for="dateAchat">Date d'achat :</label>
-                    <input type="date" name="dateAchat" id="dateAchat">
-
-                    <button type="submit" class="btn2">Enregistrer</button>
-                </form>
-            </div>
-    </div>
-    <script>
-        // Fonction pour ouvrir la boîte modal
-
-        function openModal1(numAchat, numMedoc, nomClient, nbr, dateAchat) {
-            document.getElementById('numMedoc').value = numMedoc;
-            document.getElementById('nomClient').value = nomClient;
-            document.getElementById('dateAchat').value = dateAchat;
-            document.getElementById('nbr').value = nbr;
-
-            const form = document.getElementById('medicament-form');
-            form.action = `index.php?entity=achat&action=update&id=${numAchat}&param1=${numMedoc}&param2=${nbr}`;
-
-            document.getElementById("modal1").style.display = "flex";
-            console.log(numMedoc);
-            console.log(nomClient);
-            console.log(form.action);
+      Swal.fire({
+        title: 'Êtes-vous sûr ?',
+        text: 'La facture n° ' + id + ' sera définitivement supprimée.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#e53e3e',
+        cancelButtonColor: '#718096',
+        confirmButtonText: 'Oui, supprimer !',
+        cancelButtonText: 'Annuler'
+      }).then(result => {
+        if (result.isConfirmed) {
+          fetch(
+            'index.php?entity=achat&action=delete&id=' + id +
+            '&param1=' + param1 + '&param2=' + param2,
+            { method: 'GET' }
+          )
+          .then(r => r.json())
+          .then(data => {
+            if (data.success) {
+              location.reload();
+            } else {
+              Swal.fire('Erreur', 'Une erreur est survenue lors de la suppression.', 'error');
+            }
+          })
+          .catch(() => {
+            Swal.fire('Erreur', 'Une erreur réseau est survenue.', 'error');
+          });
         }
+      });
+    });
+  });
 
+  /* ── Close .modal-bg on backdrop click ── */
+  document.querySelectorAll('.modal-bg').forEach(bg => {
+    bg.addEventListener('click', function (e) {
+      if (e.target === this) this.classList.remove('open');
+    });
+  });
+</script>
 
-        // Fonction pour fermer la boîte modale
-
-        function closeModal1() {
-            document.getElementById("modal1").style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            const modal1 = document.getElementById('modal1');
-
-            if(event.target === modal1) {
-                modal1.style.display = "none";
-            } 
-
-        };
-    </script>
-
-    <script src="/lib/sweetalert2/sweetalert2.all.min.js" ></script>
-    <script src="/Views1/achat/script.js"></script>
-    
-    
 </body>
 </html>
-
- 

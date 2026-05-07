@@ -1,17 +1,17 @@
 
-<?php
-class Accueil {
+<?php class Accueil
+{
     private $conn;
 
-    public function __construct($db) {
-        $this->conn = $db;       
+    public function __construct($db)
+    {
+        $this->conn = $db;
     }
 
-    public function read() {
-        
-    }
+    public function read() {}
 
-    public function getTop5MedicamentsVendus() {
+    public function getTop5MedicamentsVendus()
+    {
         // Requête SQL pour récupérer les médicaments les plus vendus
         $query = "
             SELECT m.Design, SUM(a.nbr) AS total_vendu
@@ -25,8 +25,8 @@ class Accueil {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function ruptureDeStock() {
-
+    public function ruptureDeStock()
+    {
         $query = "SELECT * FROM medicament WHERE stock < 5";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
@@ -34,27 +34,42 @@ class Accueil {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function recetteTotal() {
-            
-        $query = "SELECT m.prix_unitaire, a.nbr FROM achat a JOIN medicament m ON a.numMedoc = m.numMedoc" ;
+    public function recetteTotal()
+    {
+        $query =
+            "SELECT m.prix_unitaire, a.nbr FROM achat a JOIN medicament m ON a.numMedoc = m.numMedoc";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $totalProduit = 0;
-        
+
         //var_dump($result);
         foreach ($result as $row) {
-            $totalProduit += $row['nbr'] * $row['prix_unitaire'] ;
-        
+            $totalProduit += $row["nbr"] * $row["prix_unitaire"];
         }
 
         return $totalProduit;
     }
 
-    public function getRecettes5DerniersMois() {
+    public function countMedicaments()
+    {
+        $stmt = $this->conn->query("SELECT COUNT(*) AS total FROM medicament");
+        return $stmt->fetch(PDO::FETCH_ASSOC)["total"] ?? 0;
+    }
+
+    public function countAchatsDistincts()
+    {
+        $stmt = $this->conn->query(
+            "SELECT COUNT(DISTINCT numAchat) AS total FROM achat",
+        );
+        return $stmt->fetch(PDO::FETCH_ASSOC)["total"] ?? 0;
+    }
+
+    public function getRecettes5DerniersMois()
+    {
         $query = "
-            SELECT 
-                DATE_FORMAT(dateAchat, '%Y-%m') AS mois, 
+            SELECT
+                DATE_FORMAT(dateAchat, '%Y-%m') AS mois,
                 SUM(M.prix_unitaire * A.nbr) AS recette
             FROM achat A
             JOIN medicament M ON A.numMedoc = M.numMedoc
