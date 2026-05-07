@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STOCK</title>
-    <link rel="stylesheet" href="/ProjetPharma/lib/sweetalert2/sweetalert2.min.css">
-    <link rel="stylesheet" href="/ProjetPharma/Views1/entree/read.css">
+    <link rel="stylesheet" href="/lib/sweetalert2/sweetalert2.min.css">
+    <link rel="stylesheet" href="/Views1/entree/read.css">
     <nav class="navbarAll">
         <div>
           <a class="logo">G-pharm</a>
@@ -164,8 +164,8 @@
         
     </script>
 
-    <script src="/ProjetPharma/lib/sweetalert2/sweetalert2.all.min.js" ></script>
-    <script src="/ProjetPharma/Views1/entree/script.js"></script>
+    <script src="/lib/sweetalert2/sweetalert2.all.min.js" ></script>
+    <script src="/Views1/entree/script.js"></script>
        
 
 </body>

@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ACCUEIL</title>
-    <link rel="stylesheet" href="/ProjetPharma/Views1/acceuil/cssAcceuil.css">
+    <base href="https://projetpharma.mg/">
+    <link rel="stylesheet" href="/Views1/acceuil/cssAcceuil.css">
     
     <nav class="navbarAll">
         <div>
